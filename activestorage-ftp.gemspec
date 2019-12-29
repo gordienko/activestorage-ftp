@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.files       = Dir['{app,config,db,lib}/**/*', 'LICENSE', 'README.md', 'CHANGELOG.md']
   s.license     = 'MIT'
 
-  s.add_runtime_dependency 'rails', '~> 5.2', '>= 5.2.0'
+  s.add_dependency "rails", ">= 5.2.0"
   s.add_dependency "net-sftp", ["~> 2.1.2"]
   s.add_dependency "double-bag-ftps", ["0.1.3"]
 end
