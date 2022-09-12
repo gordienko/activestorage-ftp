@@ -188,7 +188,7 @@ module ActiveStorage
     end
 
     def ftp_passive
-      config.fetch(:ftp_passive)
+      config.fetch(:ftp_passive, false)
     end
 
     def ftp_chmod
