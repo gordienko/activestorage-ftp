@@ -31,7 +31,7 @@ module ActiveStorage
     def download(key)
       if block_given?
         instrument :streaming_download, key: key do
-          open(http_url_for(key)) do |file|
+          URI.open(http_url_for(key)) do |file|
             while data = file.read(64.kilobytes)
               yield data
             end
@@ -39,7 +39,7 @@ module ActiveStorage
         end
       else
         instrument :download, key: key do
-          open(http_url_for(key)) do |file|
+          URI.open(http_url_for(key)) do |file|
             file.read
           end
         end
@@ -48,7 +48,7 @@ module ActiveStorage
 
     def download_chunk(key, range)
       instrument :download_chunk, key: key, range: range do
-        open(http_url_for(key)) do |file|
+        URI.open(http_url_for(key)) do |file|
             file.seek range.begin
             file.read range.size
         end
