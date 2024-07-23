@@ -134,7 +134,7 @@ module ActiveStorage
 
     def ensure_integrity_of(key, checksum)
       response = request_head(key)
-      unless "#{response['Content-MD5']}==" == checksum
+      unless "#{response['Content-MD5']}==" == checksum || response["Content-MD5"] == checksum
         delete key
         raise ActiveStorage::IntegrityError
       end
